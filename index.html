@@ -1678,7 +1678,11 @@ p,li,.learn-txt{text-wrap:pretty}
       document.querySelectorAll('.sale-pay,.sale-box').forEach(function(e){e.style.display='none'});
       return;
     }
-    var d=Math.ceil(ost/86400000), e;
+    var d=Math.floor(ost/86400000), e;
+    if(d===0){ var ch=Math.floor(ost/3600000);
+      if(e=document.getElementById('sD2')) e.textContent=ch;
+      if(e=document.getElementById('sW2')) e.textContent=(ch%10===1&&ch%100!==11?'час':(ch%10>=2&&ch%10<=4&&(ch%100<12||ch%100>14)?'часа':'часов'));
+      return; }
     if(e=document.getElementById('sD2')) e.textContent=d;
     if(e=document.getElementById('sW2')) e.textContent=slovo(d);
   }
